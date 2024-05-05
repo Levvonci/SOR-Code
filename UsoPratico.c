@@ -26,15 +26,35 @@ int main(int argc, char* argv[]){
     inizio = 0;
     fine = arrSize / 2; 
   }else{
+    wait(id);
     inizio = arrSize / 2;
     fine = arrSize;
   }
+  
 
   int sum = 0;
   int i;
 
   for(i = inizio; i < fine; i++){
     sum += arr[i];
+  }
+
+  if(id == 0){
+    if(write(fd[1], &sum, sizeof(sum)) == -1){
+      return 3;
+    }
+    close(fd[1]);
+  }else{
+    
+    int sumFiglio;
+    close(fd[1]);
+    if(read(fd[0], &sumFiglio, sizeof(sumFiglio)) == -1){
+      return 4;
+    }
+    close(fd[0]);
+    
+    int SommaTotale = sum + sumFiglio;
+    printf("Somma totale = %d\n", SommaTotale);
   }
   
   printf("Somme parziali: %d\n", sum);

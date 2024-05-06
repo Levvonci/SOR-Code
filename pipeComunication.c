@@ -21,15 +21,14 @@ int main(int argc, char* argv[]){
     //figlio
     int x;
     
-    close(p1[1]);
     if(read(p1[0], &x, sizeof(x)) == -1){ return 3; }
     printf("Ricevuto: %d\n", x);
     x *= 4;
-    
+    close(p1[0]);
+
     if(write(p1[1], &x, sizeof(x)) == -1){ return 4; }
     printf("Scritto: %d\n", x);
-    close(p1[1]);
-    close(p1[0]);
+    //close(p1[1]);
     
   }else{
     //padre
@@ -39,12 +38,13 @@ int main(int argc, char* argv[]){
     
     if(write(p1[1], &y, sizeof(y)) == -1){ return 5; }
     printf("Scritto: %d\n", y);
+    close(p1[1]);
+    
+    wait(NULL);
     
     if(read(p1[0], &y, sizeof(y)) == -1){ return 6; }
     printf("Il risultato è: %d\n", y);
-    wait(NULL);
-    
-    close(p1[1]);
+    close(p1[0]);
   }
   close(p1[0]);
   close(p1[1]);

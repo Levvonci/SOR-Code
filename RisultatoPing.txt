@@ -1,0 +1,9 @@
+PING google.com (216.58.204.238): 56 data bytes
+64 bytes from 216.58.204.238: icmp_seq=0 ttl=113 time=38.025 ms
+64 bytes from 216.58.204.238: icmp_seq=1 ttl=113 time=25.643 ms
+64 bytes from 216.58.204.238: icmp_seq=2 ttl=113 time=28.809 ms
+64 bytes from 216.58.204.238: icmp_seq=3 ttl=113 time=29.953 ms
+
+--- google.com ping statistics ---
+4 packets transmitted, 4 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 25.643/30.608/38.025/4.564 ms

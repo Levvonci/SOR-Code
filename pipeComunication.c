@@ -42,6 +42,8 @@ int main(int argc, char* argv[]){
     
     wait(NULL);
     
+    wait(NULL);
+
     if(read(p1[0], &y, sizeof(y)) == -1){ return 6; }
     printf("Il risultato è: %d\n", y);
     close(p1[0]);

@@ -8,13 +8,18 @@
 #include <sys/types.h>
 #include <fcntl.h>
 #include <time.h>
-#include <process.h>>
 
 int main(int argc, char* argv[]){
   
-  _execl()
+  execlp
+  ("ping",
+   "ping",
+   "google.com",
+   NULL
+  );
   
-  
-  
+  //Non avviene la print dato che il dopo il ping il processo termina
+
+  printf("Qualcosa");
   return 0;
 }

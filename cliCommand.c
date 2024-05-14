@@ -1,29 +1,25 @@
+#include <errno.h>
+#include <fcntl.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <unistd.h>
-#include <sys/wait.h>
-#include <errno.h>
 #include <sys/stat.h>
 #include <sys/types.h>
-#include <fcntl.h>
+#include <sys/wait.h>
 #include <time.h>
+#include <unistd.h>
 
-int main(int argc, char* argv[]){
-  
-  int pid;
-  if((pid = fork()) == 0){
+int main(int argc, char *argv[]) {
 
-    execlp("ping", "ping", "-c", "3", "google.it", NULL);
+    int pid;
+    if ((pid = fork()) == 0) {
 
-  }else{
-    wait(NULL);
-    printf("Successo!!");
+        execlp("ping", "ping", "-c", "3", "google.it", NULL);
 
-  }
-  
-  
-  
+    } else {
+        wait(NULL);
+        printf("Successo!!");
+    }
 
-  return 0; 
+    return 0;
 }

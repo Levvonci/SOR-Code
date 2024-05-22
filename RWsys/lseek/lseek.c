@@ -4,26 +4,27 @@
 #include <unistd.h>
 
 
-#define BUF_SIZE 24
+#define BUF_SIZE 5
 
 int main(int argc, char* argv[]){
-    int fd = open(argv[1], O_RDONLY);
+    int fd = open("/Users/lvnc/repo/SOR-Code/RWsys/lseek/fileprova.txt", O_RDONLY);
     char buf[BUF_SIZE]; //5
 
     if(fd == -1){
+        perror("Errore nella lettura\n");
         return 1;
     }else{
         int seek = lseek(fd, (BUF_SIZE - 1)*2, SEEK_SET); // off set 8 bytes da sopra
         if(seek == -1){
+            perror("Errore nella seek\n");
             return 2;
         }else{
             ssize_t numRead = read(fd, buf, BUF_SIZE - 2); //3 bytes buffer 4 su fd
             printf("%s\n", buf);
         }
         close(fd);
-    }else{
-        return 3;
-    }
+    }    
+
 
     return 0;
 }
